@@ -1,0 +1,35 @@
+/**
+ * Vuetify SASS variables
+ */
+
+:root {
+    color-scheme: unset;
+}
+
+body, html {
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#render {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.v-application {
+  background: transparent !important;
+}
