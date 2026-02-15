@@ -1,125 +1,183 @@
-# fivem-typescript-boilerplate
+# FiveM TypeScript Boilerplate
 
-A boilerplate for creating FiveM resources with TypeScript.
+A modern FiveM resource boilerplate featuring TypeScript, Vue 3, Vuetify, and a robust build system with hot reload support.
 
 ## Features
 
-- **Frontend**: Vue 3 + Vuetify 3 + TypeScript + Axiom
-- **Backend**: TypeScript with FiveM natives
-- **Database**: Prisma ORM with MySQL (automatic migrations & type-safety)
-- **Shared**: Type-safe communication between client/server/UI
-- **Hot Reload**: Development mode for UI with Vite
+- 🚀 **TypeScript** - Full TypeScript support for client, server, and web
+- 🎨 **Vue 3 + Vuetify** - Modern UI framework with Material Design components
+- 🔄 **Hot Reload** - Watch mode for rapid development
+- 📦 **ESBuild** - Lightning-fast builds
+- 🌍 **Localization** - Built-in i18n support
+- 🗄️ **Database Migrations** - Structured database migration system
+- 🎯 **Type Safety** - End-to-end type safety across client, server, and UI
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v22 or higher)
+- [Yarn](https://yarnpkg.com/) package manager
+- FiveM Server (Build 13068 or higher)
+- OneSync enabled on your server
+
+## Installation
+
+1. Clone or download this resource to your FiveM server's `resources` folder
+
+2. Navigate to the resource directory:
+```bash
+cd resources/[standalone]/stockmarket
+```
+
+3. Install dependencies:
+```bash
+yarn install
+```
+
+## Development
+
+### Watch Mode (Development)
+
+For active development with automatic rebuilds:
+
+```bash
+yarn watch
+```
+
+This will:
+- Watch for changes in TypeScript files
+- Automatically rebuild on file changes
+- Watch and rebuild the Vue/Vite web UI
+
+### Web UI Development
+
+To develop the UI with Vite's dev server and HMR:
+
+```bash
+yarn web:dev
+```
+
+Access the UI at `http://localhost:5173` (or the port shown in console)
+
+## Building for Production
+
+Build the resource for production:
+
+```bash
+yarn build
+```
+
+This will:
+- Compile all TypeScript code (client/server)
+- Bundle and minify the web UI
+- Generate the `fxmanifest.lua`
+- Output compiled files to the `dist` folder
 
 ## Project Structure
 
 ```
 stockmarket/
-├── client/          # Client-side FiveM scripts
-│   ├── client.ts    # Main client initialization
-│   ├── callbacks.ts # NUI callbacks and commands
-│   ├── events.ts    # Client event handlers
-│   └── utils.ts     # Client utility functions
-├── server/          # Server-side FiveM scripts
-│   ├── server.ts    # Main server initialization
-│   ├── callbacks.ts # Server callbacks
-│   ├── events.ts    # Server event handlers
-│   ├── db.ts        # Database utilities
-│   └── utils.ts     # Server utility functions
-├── shared/          # Shared types and config
-│   ├── types.ts     # Shared TypeScript types
-│   ├── enums.ts     # Shared enumerations
-│   ├── config.ts    # Shared configuration
-│   └── index.ts     # Shared exports
-├── html/            # Vue 3 UI
+├── src/
+│   ├── client/          # Client-side TypeScript code
+│   ├── server/          # Server-side TypeScript code
+│   │   └── migrations/  # Database migration files
+│   └── common/          # Shared code between client/server
+│       ├── config.ts    # Configuration loader
+│       ├── locale.ts    # Localization utilities
+│       └── utils.ts     # Common utilities
+├── web/
 │   ├── src/
 │   │   ├── components/  # Vue components
-│   │   ├── pages/       # Vue pages (auto-routed)
+│   │   ├── pages/       # Vue pages (file-based routing)
 │   │   ├── composables/ # Vue composables
-│   │   ├── utils/       # UI utilities
-│   │   ├── plugins/     # Vue plugins
-│   │   └── router/      # Vue router
-│   └── package.json
-└── fxmanifest.lua   # FiveM resource manifest
+│   │   ├── utils/       # Web utilities
+│   │   └── plugins/     # Vue plugins (Vuetify, etc.)
+│   └── public/          # Static assets
+├── static/
+│   └── config.json      # Runtime configuration
+├── locales/
+│   └── en.json          # English translations
+├── scripts/
+│   ├── build.js         # Build configuration
+│   └── utils.js         # Build utilities
+└── dist/                # Compiled output (generated)
+    ├── client.js
+    ├── server.js
+    └── web/
 ```
 
-## Installation
+## Available Scripts
 
-1. **Clone/Download** this resource to your FiveM server's resources folder
+| Command | Description |
+|---------|-------------|
+| `yarn install` | Install dependencies |
+| `yarn build` | Build for production |
+| `yarn watch` | Development mode with auto-rebuild |
+| `yarn web:dev` | Start Vite dev server for UI development |
+| `yarn format` | Format code with Biome and ESLint |
+| `yarn lint` | Lint code with Biome and ESLint |
 
-2. **Install root dependencies**:
-   ```bash
-   yarn install
-   ```
+## Configuration
 
-3. **Install UI dependencies**:
-   ```bash
-   cd html
-   yarn install
-   ```
+### Static Configuration
 
-4. **Database Setup**:
-   - Copy `.env.example` to `.env`
-   - Update the `DATABASE_URL` in `.env` with your MySQL connection string:
-     ```
-     DATABASE_URL="mysql://username:password@localhost:3306/database_name"
-     ```
-   - Generate Prisma Client:
-     ```bash
-     yarn prisma:generate
-     ```
-   - Run migrations to create database tables:
-     ```bash
-     yarn prisma:migrate
-     ```
+Edit `static/config.json` to configure your resource. This file is loaded at runtime and can be modified without rebuilding.
 
-5. **Build the resource**:
-   ```bash
-   yarn build
-   ```
+### Localization
 
-6. **Add to server.cfg**:
-   ```
-   ensure stockmarket
-   ```
+Add or modify translation files in the `locales/` directory:
+- `en.json` - English (default)
+- Add more languages as needed (e.g., `fr.json`, `de.json`)
 
-## Development
+## Database Migrations
 
-Use `yarn watch` to actively rebuild modified files while developing the resource.
+Database migrations are located in `src/server/migrations/`. To create a new migration:
 
-During web development, use `yarn web:dev` to start vite's webserver and watch for changes.
+1. Copy `TEMPLATE.ts` in the migrations folder
+2. Name it with a sequential number (e.g., `002_add_users_table.ts`)
+3. Implement the `up` and `down` functions
+4. Migrations run automatically on resource start
 
-### Database Development
+## Technologies Used
 
-- **Pyarna Studio**: Open a visual database editor
-  ```bash
-  yarn prisma:studio
-  ```
+### Core
+- **TypeScript** - Type-safe JavaScript
+- **ESBuild** - Fast bundler
+- **Node.js 22** - Runtime environment
 
-- **Create Migration**: After changing `schema.prisma`
-  ```bash
-  yarn prisma:migrate:dev
-  ```
+### Frontend (Web UI)
+- **Vue 3** - Progressive JavaScript framework
+- **Vuetify** - Material Design component framework
+- **Vue Router** - File-based routing
+- **Vite** - Next-generation frontend tooling
+- **TypeScript** - Full type safety
 
-- **Deploy Migration**: Apply migrations to production
-  ```bash
-  yarn prisma:migrate
-  ```
+### FiveM
+- **ox_lib** - Utility library
+- **NativeWrappers** - Type-safe native calls
 
-## Build
+## Development Tips
 
-Use `pnpm build` to build all project files in production mode.
+1. **Type Safety**: Use TypeScript's type system to catch errors early
+2. **Hot Reload**: Use `yarn watch` during development for instant feedback
+3. **UI Development**: Use `yarn web:dev` for faster UI iteration with HMR
+4. **Code Quality**: Run `yarn lint` before committing changes
+5. **Formatting**: Use `yarn format` to maintain consistent code style
 
-To build and create GitHub releases, tag your commit (e.g. `v1.0.0`) and push it.
+## License
 
-## Layout
+This project is based on the [Overextended FiveM TypeScript Boilerplate](https://github.com/overextended/fivem-typescript-boilerplate).
 
-- [/dist/](dist)
-  - Compiled project files.
-- [/locales/](locales)
-  - JSON files used for translations with [ox_lib](https://overextended.dev/ox_lib/Modules/Locale/Shared).
-- [/scripts/](scripts)
-  - Scripts used in the development process, but not part of the compiled resource.
-- [/src/](src)
-  - Project source code.
-- [/static/](static)
-  - Files to include with the resource that aren't compiled or loaded (e.g. config).
+## Support
+
+For issues or questions:
+- Check the [Issues](https://github.com/overextended/fivem-typescript-boilerplate/issues) page
+- Review FiveM documentation
+- Join relevant Discord communities
+
+## Author
+
+SaiCode
+
+---
+
+**Note**: This is a boilerplate template. Customize it for your specific resource needs.
