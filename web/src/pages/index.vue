@@ -1,6 +1,6 @@
 <template>
   <centered-layout>
-    <transparent-card blur-strength="15" card-class="pa-30">
+    <transparent-card :blur-strength="15" card-class="pa-30">
       <v-card-title class="text-h4">
         Boilerplate
       </v-card-title>

@@ -6,8 +6,8 @@ A boilerplate for creating FiveM resources with TypeScript.
 
 - **Frontend**: Vue 3 + Vuetify 3 + TypeScript + Axiom
 - **Backend**: TypeScript with FiveM natives
+- **Database**: Prisma ORM with MySQL (automatic migrations & type-safety)
 - **Shared**: Type-safe communication between client/server/UI
-- **Database**: OxMySQL integration ready
 - **Hot Reload**: Development mode for UI with Vite
 
 ## Project Structure
@@ -57,21 +57,53 @@ stockmarket/
    yarn install
    ```
 
-4. **Build the resource**:
+4. **Database Setup**:
+   - Copy `.env.example` to `.env`
+   - Update the `DATABASE_URL` in `.env` with your MySQL connection string:
+     ```
+     DATABASE_URL="mysql://username:password@localhost:3306/database_name"
+     ```
+   - Generate Prisma Client:
+     ```bash
+     yarn prisma:generate
+     ```
+   - Run migrations to create database tables:
+     ```bash
+     yarn prisma:migrate
+     ```
+
+5. **Build the resource**:
    ```bash
    yarn build
    ```
 
-5. **Add to server.cfg**:
+6. **Add to server.cfg**:
    ```
    ensure stockmarket
    ```
 
 ## Development
 
-Use `pnpm watch` to actively rebuild modified files while developing the resource.
+Use `yarn watch` to actively rebuild modified files while developing the resource.
 
-During web development, use `pnpm web:dev` to start vite's webserver and watch for changes.
+During web development, use `yarn web:dev` to start vite's webserver and watch for changes.
+
+### Database Development
+
+- **Pyarna Studio**: Open a visual database editor
+  ```bash
+  yarn prisma:studio
+  ```
+
+- **Create Migration**: After changing `schema.prisma`
+  ```bash
+  yarn prisma:migrate:dev
+  ```
+
+- **Deploy Migration**: Apply migrations to production
+  ```bash
+  yarn prisma:migrate
+  ```
 
 ## Build
 

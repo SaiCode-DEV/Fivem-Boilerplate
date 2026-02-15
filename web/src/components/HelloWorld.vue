@@ -8,11 +8,13 @@
       <h1 class="text-h2 font-weight-bold">Boilerplate</h1>
 
       <div class="py-14" />
+      <div class="text-center mt-4">
+        <p class="text-h6">Counter: {{ counter }}</p>
+      </div>
 
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">
           <v-btn
-            href="https://vuetifyjs.com/components/all/"
             min-width="164"
             rel="noopener noreferrer"
             target="_blank"
@@ -31,12 +33,12 @@
         <v-col cols="auto">
           <v-btn
             color="primary"
-            href="https://vuetifyjs.com/introduction/why-vuetify/#feature-guides"
             min-width="228"
             rel="noopener noreferrer"
             size="x-large"
             target="_blank"
             variant="flat"
+            @click="handleIncrement"
           >
             <v-icon
               icon="mdi-speedometer"
@@ -50,7 +52,6 @@
 
         <v-col cols="auto">
           <v-btn
-            href="https://community.vuetifyjs.com/"
             min-width="164"
             rel="noopener noreferrer"
             target="_blank"
@@ -71,5 +72,32 @@
 </template>
 
 <script lang="ts" setup>
-//
+  import { onMounted, ref } from 'vue';
+  import { useNuiEvent } from '../composables';
+  import { nuiCallback } from '../utils';
+
+  const counter = ref(0);
+  async function handleIncrement () {
+    try {
+      await nuiCallback('incrementCounter');
+    } catch (error) {
+      console.error('Failed to increment counter:', error);
+    }
+  }
+
+  async function loadCounter () {
+    try {
+      await nuiCallback('getCounter');
+    } catch (error) {
+      console.error('Failed to load counter:', error);
+    }
+  }
+
+  useNuiEvent('updateCounter', (data: { counter: number }) => {
+    counter.value = data.counter;
+  });
+
+  onMounted(() => {
+    loadCounter();
+  });
 </script>

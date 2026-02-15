@@ -165,7 +165,6 @@ function createGameView (canvas, resolutionScale = config.resolutionScale) {
   function updateGlassElements () {
     glassElements = Array.from(document.querySelectorAll('[data-hlsl]'));
 
-    console.log(glassElements);
     if (glassElements.length === 0) {
       canvas.style.display = 'none';
       return;
