@@ -3,7 +3,7 @@ import type { NuiCallbackResponse } from '../types';
 /**
  * Send a NUI callback to the client
  */
-export async function nuiCallback<T = any, R = any> (action: string, data?: T): Promise<R> {
+export async function nuiCallback<T = any, R = any>(action: string, data?: T): Promise<R> {
   try {
     const response = await fetch(`https://${GetParentResourceName()}/${action}`, {
       method: 'POST',
@@ -28,6 +28,6 @@ export async function nuiCallback<T = any, R = any> (action: string, data?: T): 
 /**
  * Get the parent resource name
  */
-function GetParentResourceName (): string {
+function GetParentResourceName(): string {
   return (window as any).GetParentResourceName?.() || 'stockmarket';
 }

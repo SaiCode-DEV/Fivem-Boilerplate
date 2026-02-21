@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { useVisibility } from './composables';
-  import router from './router';
-  import { isDevelopment } from './utils';
+import { useVisibility } from './composables';
+import router from './router';
+import { isDevelopment } from './utils';
 
-  const { isVisible } = useVisibility();
+const { isVisible } = useVisibility();
 </script>

@@ -1,6 +1,6 @@
 /**
  * Migration Template
- * 
+ *
  * Copy this file and rename it with the next version number
  * Example: 002_add_new_table.ts
  */
@@ -8,7 +8,7 @@
 export default {
   version: 999, // CHANGE THIS to the next version number
   name: '999_migration_name', // CHANGE THIS to describe your migration
-  
+
   /**
    * Migration up - applies the changes
    */
@@ -22,7 +22,7 @@ export default {
     //   )
     // `);
   },
-  
+
   /**
    * Migration down - reverts the changes (optional)
    */
@@ -30,5 +30,5 @@ export default {
     // Add your rollback code here
     // Example:
     // await exports.oxmysql.execute_async('DROP TABLE IF EXISTS your_table');
-  }
+  },
 };

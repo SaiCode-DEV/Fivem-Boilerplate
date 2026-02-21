@@ -14,17 +14,8 @@
 
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">
-          <v-btn
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text"
-          >
-            <v-icon
-              icon="mdi-view-dashboard"
-              size="large"
-              start
-            />
+          <v-btn min-width="164" rel="noopener noreferrer" target="_blank" variant="text">
+            <v-icon icon="mdi-view-dashboard" size="large" start />
 
             Components
           </v-btn>
@@ -40,28 +31,15 @@
             variant="flat"
             @click="handleIncrement"
           >
-            <v-icon
-              icon="mdi-speedometer"
-              size="large"
-              start
-            />
+            <v-icon icon="mdi-speedometer" size="large" start />
 
             Get Started
           </v-btn>
         </v-col>
 
         <v-col cols="auto">
-          <v-btn
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text"
-          >
-            <v-icon
-              icon="mdi-github"
-              size="large"
-              start
-            />
+          <v-btn min-width="164" rel="noopener noreferrer" target="_blank" variant="text">
+            <v-icon icon="mdi-github" size="large" start />
 
             Community
           </v-btn>
@@ -72,32 +50,32 @@
 </template>
 
 <script lang="ts" setup>
-  import { onMounted, ref } from 'vue';
-  import { useNuiEvent } from '../composables';
-  import { nuiCallback } from '../utils';
+import { onMounted, ref } from 'vue';
+import { useNuiEvent } from '../composables';
+import { nuiCallback } from '../utils';
 
-  const counter = ref(0);
-  async function handleIncrement () {
-    try {
-      await nuiCallback('incrementCounter');
-    } catch (error) {
-      console.error('Failed to increment counter:', error);
-    }
+const counter = ref(0);
+async function handleIncrement() {
+  try {
+    await nuiCallback('incrementCounter');
+  } catch (error) {
+    console.error('Failed to increment counter:', error);
   }
+}
 
-  async function loadCounter () {
-    try {
-      await nuiCallback('getCounter');
-    } catch (error) {
-      console.error('Failed to load counter:', error);
-    }
+async function loadCounter() {
+  try {
+    await nuiCallback('getCounter');
+  } catch (error) {
+    console.error('Failed to load counter:', error);
   }
+}
 
-  useNuiEvent('updateCounter', (data: { counter: number }) => {
-    counter.value = data.counter;
-  });
+useNuiEvent('updateCounter', (data: { counter: number }) => {
+  counter.value = data.counter;
+});
 
-  onMounted(() => {
-    loadCounter();
-  });
+onMounted(() => {
+  loadCounter();
+});
 </script>

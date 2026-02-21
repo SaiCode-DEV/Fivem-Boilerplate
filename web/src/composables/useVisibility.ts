@@ -9,11 +9,11 @@ const isVisible = ref(isDevelopment());
 /**
  * Composable for managing UI visibility
  */
-export function useVisibility () {
+export function useVisibility() {
   const router = useRouter();
 
   // Listen for setVisible message from NUI
-  onNuiMessage<SetVisibleData>(NuiActions.SET_VISIBLE, async data => {
+  onNuiMessage<SetVisibleData>(NuiActions.SET_VISIBLE, async (data) => {
     isVisible.value = data.visible;
 
     // Navigate to specific page if provided

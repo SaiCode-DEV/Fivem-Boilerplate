@@ -1,0 +1,9 @@
+node_modules
+dist
+.nx
+*.d.ts
+typed-router.d.ts
+components.d.ts
+fxmanifest.lua
+package-lock.json
+yarn.lock

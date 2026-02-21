@@ -31,9 +31,7 @@ async function ensureMigrationsTable(): Promise<void> {
  * Gets all executed migration versions from the database
  */
 async function getExecutedMigrations(): Promise<number[]> {
-  const result = await exports.oxmysql.query_async(
-    'SELECT version FROM stockmarket_migrations ORDER BY version ASC'
-  );
+  const result = await exports.oxmysql.query_async('SELECT version FROM stockmarket_migrations ORDER BY version ASC');
   return result?.map((row: any) => row.version) ?? [];
 }
 
@@ -41,10 +39,10 @@ async function getExecutedMigrations(): Promise<number[]> {
  * Records a migration as executed
  */
 async function recordMigration(migration: Migration): Promise<void> {
-  await exports.oxmysql.execute_async(
-    'INSERT INTO stockmarket_migrations (version, name) VALUES (?, ?)',
-    [migration.version, migration.name]
-  );
+  await exports.oxmysql.execute_async('INSERT INTO stockmarket_migrations (version, name) VALUES (?, ?)', [
+    migration.version,
+    migration.name,
+  ]);
 }
 
 /**
@@ -52,30 +50,28 @@ async function recordMigration(migration: Migration): Promise<void> {
  */
 export async function runMigrations(): Promise<void> {
   console.log('[StockMarket] Checking database migrations...');
-  
+
   try {
     // Ensure migrations tracking table exists
     await ensureMigrationsTable();
-    
+
     // Get executed migrations
     const executedVersions = await getExecutedMigrations();
-    
+
     // Find pending migrations
-    const pendingMigrations = migrations.filter(
-      (migration) => !executedVersions.includes(migration.version)
-    );
-    
+    const pendingMigrations = migrations.filter((migration) => !executedVersions.includes(migration.version));
+
     if (pendingMigrations.length === 0) {
       console.log('[StockMarket] All migrations are up to date!');
       return;
     }
-    
+
     console.log(`[StockMarket] Found ${pendingMigrations.length} pending migration(s)`);
-    
+
     // Execute pending migrations
     for (const migration of pendingMigrations) {
       console.log(`[StockMarket] Running migration: ${migration.name} (v${migration.version})`);
-      
+
       try {
         await migration.up();
         await recordMigration(migration);
@@ -85,7 +81,7 @@ export async function runMigrations(): Promise<void> {
         throw error;
       }
     }
-    
+
     console.log('[StockMarket] All migrations completed successfully!');
   } catch (error) {
     console.error('[StockMarket] Migration error:', error);
@@ -98,7 +94,5 @@ export async function runMigrations(): Promise<void> {
  */
 export async function getCurrentVersion(): Promise<number> {
   const executedVersions = await getExecutedMigrations();
-  return executedVersions.length > 0 
-    ? Math.max(...executedVersions) 
-    : 0;
+  return executedVersions.length > 0 ? Math.max(...executedVersions) : 0;
 }

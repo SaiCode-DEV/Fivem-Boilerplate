@@ -5,7 +5,7 @@ type MessageHandler<T = any> = (data: T) => void;
 /**
  * Listen for NUI messages
  */
-export function onNuiMessage<T = any> (action: string, handler: MessageHandler<T>) {
+export function onNuiMessage<T = any>(action: string, handler: MessageHandler<T>) {
   window.addEventListener('message', (event: MessageEvent<NuiMessage<T>>) => {
     if (event.data.action === action) {
       handler(event.data.data);
@@ -16,7 +16,7 @@ export function onNuiMessage<T = any> (action: string, handler: MessageHandler<T
 /**
  * Send a message to close the NUI (ESC key handler)
  */
-export function setupEscapeListener (action: string) {
+export function setupEscapeListener(action: string) {
   window.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       fetch(`https://${GetParentResourceName()}/${action}`, {
@@ -33,6 +33,6 @@ export function setupEscapeListener (action: string) {
 /**
  * Get the parent resource name
  */
-function GetParentResourceName (): string {
+function GetParentResourceName(): string {
   return (window as any).GetParentResourceName?.() || 'stockmarket';
 }

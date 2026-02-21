@@ -31,14 +31,14 @@ createBuilder(
       name: 'client',
       options: {
         platform: 'browser',
-        target: ['es2021'], 
+        target: ['es2021'],
         format: 'iife',
         dropLabels: [...dropLabels, '$SERVER'],
       },
     },
   ],
   async (outfiles) => {
-    const files = await getFiles('dist/web', 'static', 'locales');
+    const _files = await getFiles('dist/web', 'static', 'locales');
     await createFxmanifest({
       client_scripts: [outfiles.client],
       server_scripts: [outfiles.server],
@@ -49,12 +49,12 @@ createBuilder(
         description: 'A FiveM resource boilerplate using Vue, Vuetify and TypeScript',
         repository: '',
         ui_page: 'dist/web/index.html',
-        node_version: '22'
+        node_version: '22',
       },
     });
 
-    if (web && !watch) await exec("cd ./web && vite build");
-  }
+    if (web && !watch) await exec('cd ./web && vite build');
+  },
 );
 
-if (web && watch) await exec("cd ./web && vite build --watch");
+if (web && watch) await exec('cd ./web && vite build --watch');

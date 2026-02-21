@@ -24,11 +24,13 @@ A modern FiveM resource boilerplate featuring TypeScript, Vue 3, Vuetify, and a 
 1. Clone or download this resource to your FiveM server's `resources` folder
 
 2. Navigate to the resource directory:
+
 ```bash
 cd resources/[standalone]/stockmarket
 ```
 
 3. Install dependencies:
+
 ```bash
 yarn install
 ```
@@ -44,6 +46,7 @@ yarn watch
 ```
 
 This will:
+
 - Watch for changes in TypeScript files
 - Automatically rebuild on file changes
 - Watch and rebuild the Vue/Vite web UI
@@ -67,6 +70,7 @@ yarn build
 ```
 
 This will:
+
 - Compile all TypeScript code (client/server)
 - Bundle and minify the web UI
 - Generate the `fxmanifest.lua`
@@ -107,14 +111,14 @@ stockmarket/
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `yarn install` | Install dependencies |
-| `yarn build` | Build for production |
-| `yarn watch` | Development mode with auto-rebuild |
+| Command        | Description                              |
+| -------------- | ---------------------------------------- |
+| `yarn install` | Install dependencies                     |
+| `yarn build`   | Build for production                     |
+| `yarn watch`   | Development mode with auto-rebuild       |
 | `yarn web:dev` | Start Vite dev server for UI development |
-| `yarn format` | Format code with Biome and ESLint |
-| `yarn lint` | Lint code with Biome and ESLint |
+| `yarn format`  | Format code with Biome and ESLint        |
+| `yarn lint`    | Lint code with Biome and ESLint          |
 
 ## Configuration
 
@@ -125,6 +129,7 @@ Edit `static/config.json` to configure your resource. This file is loaded at run
 ### Localization
 
 Add or modify translation files in the `locales/` directory:
+
 - `en.json` - English (default)
 - Add more languages as needed (e.g., `fr.json`, `de.json`)
 
@@ -140,11 +145,13 @@ Database migrations are located in `src/server/migrations/`. To create a new mig
 ## Technologies Used
 
 ### Core
+
 - **TypeScript** - Type-safe JavaScript
 - **ESBuild** - Fast bundler
 - **Node.js 22** - Runtime environment
 
 ### Frontend (Web UI)
+
 - **Vue 3** - Progressive JavaScript framework
 - **Vuetify** - Material Design component framework
 - **Vue Router** - File-based routing
@@ -152,6 +159,7 @@ Database migrations are located in `src/server/migrations/`. To create a new mig
 - **TypeScript** - Full type safety
 
 ### FiveM
+
 - **ox_lib** - Utility library
 - **NativeWrappers** - Type-safe native calls
 
@@ -170,6 +178,7 @@ This project is based on the [Overextended FiveM TypeScript Boilerplate](https:/
 ## Support
 
 For issues or questions:
+
 - Check the [Issues](https://github.com/overextended/fivem-typescript-boilerplate/issues) page
 - Review FiveM documentation
 - Join relevant Discord communities

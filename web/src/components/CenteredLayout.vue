@@ -9,15 +9,15 @@
 </template>
 
 <script lang="ts" setup>
-  interface Props {
-    cols?: number | string
-    lg?: number | string
-    md?: number | string
-  }
+interface Props {
+  cols?: number | string;
+  lg?: number | string;
+  md?: number | string;
+}
 
-  const props = withDefaults(defineProps<Props>(), {
-    cols: 12,
-    lg: 6,
-    md: 8,
-  });
+const _props = withDefaults(defineProps<Props>(), {
+  cols: 12,
+  lg: 6,
+  md: 8,
+});
 </script>

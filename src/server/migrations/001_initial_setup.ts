@@ -20,5 +20,5 @@ export default {
   },
   down: async () => {
     await exports.oxmysql.execute_async('DROP TABLE IF EXISTS stockmarket_counter');
-  }
+  },
 };

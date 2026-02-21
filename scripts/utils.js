@@ -11,7 +11,9 @@ export async function exists(path) {
   try {
     await stat(path);
     return true;
-  } catch (err) {}
+  } catch {
+    // no-op
+  }
 
   return false;
 }
@@ -48,14 +50,14 @@ export async function getFiles(...args) {
           dirents.map(async (dirent) => {
             const path = `${dir}/${dirent.name}`;
             return dirent.isDirectory() ? await getFiles(path) : path;
-          })
+          }),
         );
 
         return paths.flat();
-      } catch (err) {
+      } catch {
         return [];
       }
-    })
+    }),
   );
 
   return files.flat();

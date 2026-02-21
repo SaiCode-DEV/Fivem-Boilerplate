@@ -1,56 +1,61 @@
 {
-	"name": "fivem-typescript-boilerplate",
-	"author": "Overextended",
-	"version": "0.0.0",
-	"license": "",
-	"description": "",
-	"type": "module",
-	"scripts": {
-		"web:dev": "cd web && vite dev",
-		"build": "node scripts/build.js",
-		"watch": "node scripts/build.js --watch",
-		"format": "yarn biome format --write && cd web && eslint . --fix",
-		"lint": "yarn biome lint --write && cd web && eslint ."
-	},
-	"keywords": [
-		"fivem"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
-	},
-	"bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
-	"devDependencies": {
-		"@citizenfx/client": "latest",
-		"@citizenfx/server": "latest",
-		"@jgoz/esbuild-plugin-typecheck": "^4.0.3",
-		"@overextended/fx-utils": "^0.0.4",
-		"@tsconfig/node22": "^22.0.5",
-		"@types/node": "^22.13.9",
-		"@vitejs/plugin-vue": "^6.0.4",
-		"@vue/tsconfig": "^0.8.1",
-		"esbuild": "^0.25.0",
-		"eslint": "^10.0.0",
-		"eslint-config-vuetify": "^4.3.5-beta.1",
-		"npm-run-all2": "^8.0.4",
-		"sass-embedded": "^1.97.3",
-		"typescript": "^5.8.2",
-		"unplugin-fonts": "^1.4.0",
-		"unplugin-vue-components": "^31.0.0",
-		"unplugin-vue-router": "^0.19.2",
-		"vite": "^5.4.14",
-		"vite-plugin-vuetify": "^2.1.3",
-		"vue-tsc": "^3.2.4"
-	},
-	"dependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@fontsource/roboto": "^5.2.9",
-		"@mdi/font": "^7.4.47",
-		"@nativewrappers/fivem": "latest",
-		"@overextended/ox_lib": "latest",
-		"axiom": "^0.43.0",
-		"vue": "^3.5.28",
-		"vue-router": "^5.0.2",
-		"vuetify": "^3.11.8"
-	}
+  "name": "fivem-typescript-boilerplate",
+  "author": "Overextended",
+  "version": "0.0.0",
+  "license": "",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "web:dev": "cd web && vite dev",
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
+    "fix": "prettier --write --list-different . && eslint . --fix"
+  },
+  "keywords": [
+    "fivem"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
+  },
+  "bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
+  "devDependencies": {
+    "@citizenfx/client": "latest",
+    "@citizenfx/server": "latest",
+    "@jgoz/esbuild-plugin-typecheck": "^4.0.3",
+    "@overextended/fx-utils": "^0.0.4",
+    "@tsconfig/node22": "^22.0.5",
+    "@types/node": "^22.13.9",
+    "@typescript-eslint/eslint-plugin": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.0",
+    "@vitejs/plugin-vue": "^6.0.4",
+    "@vue/tsconfig": "^0.8.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-vuetify": "^4.3.5-beta.1",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.8.0",
+    "npm-run-all2": "^8.0.4",
+    "prettier": "^3.8.1",
+    "sass-embedded": "^1.97.3",
+    "typescript": "^5.8.2",
+    "unplugin-fonts": "^1.4.0",
+    "unplugin-vue-components": "^31.0.0",
+    "unplugin-vue-router": "^0.19.2",
+    "vite": "^5.4.14",
+    "vite-plugin-vuetify": "^2.1.3",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^3.2.4"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^5.2.9",
+    "@mdi/font": "^7.4.47",
+    "@nativewrappers/fivem": "latest",
+    "@overextended/ox_lib": "latest",
+    "axiom": "^0.43.0",
+    "vue": "^3.5.28",
+    "vue-router": "^5.0.2",
+    "vuetify": "^3.11.8"
+  }
 }

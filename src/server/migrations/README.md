@@ -33,7 +33,7 @@ export default {
   down: async () => {
     // Rollback code (optional, for future use)
     await exports.oxmysql.execute_async('DROP TABLE IF EXISTS stockmarket_stocks');
-  }
+  },
 };
 ```
 
@@ -68,6 +68,7 @@ The migration will run automatically on next server start!
 ## Example Migrations
 
 ### Adding a Column
+
 ```typescript
 export default {
   version: 3,
@@ -83,11 +84,12 @@ export default {
       ALTER TABLE stockmarket_stocks 
       DROP COLUMN IF EXISTS volume
     `);
-  }
+  },
 };
 ```
 
 ### Adding Indexes
+
 ```typescript
 export default {
   version: 4,
@@ -103,13 +105,14 @@ export default {
       DROP INDEX IF EXISTS idx_symbol 
       ON stockmarket_stocks
     `);
-  }
+  },
 };
 ```
 
 ## Migration Status
 
 Check server console on startup to see:
+
 - Which migrations are pending
 - Which migrations were executed
 - Current migration version
