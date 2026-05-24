@@ -27,17 +27,7 @@ export default defineConfig({
     Components({
       dts: 'src/components.d.ts',
     }),
-    Fonts({
-      fontsource: {
-        families: [
-          {
-            name: 'Roboto',
-            weights: [100, 300, 400, 500, 700, 900],
-            styles: ['normal', 'italic'],
-          },
-        ],
-      },
-    }),
+    Fonts(),
   ],
   define: { 'process.env': {} },
   resolve: {

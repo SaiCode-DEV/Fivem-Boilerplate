@@ -16,6 +16,23 @@ onNet(`${ResourceName}:openNui`, (page?: string) => {
   });
 });
 
+RegisterCommand(
+  `${ResourceName}:openNui`,
+  (source: number, args: string[]) => {
+    const page = args?.[0] || '/';
+    SetNuiFocus(true, true);
+
+    SendNUIMessage({
+      action: 'setVisible',
+      data: {
+        visible: true,
+        page: page,
+      },
+    });
+  },
+  false,
+);
+
 onNet(`${ResourceName}:closeNui`, () => {
   SetNuiFocus(false, false);
 
@@ -26,6 +43,21 @@ onNet(`${ResourceName}:closeNui`, () => {
     },
   });
 });
+
+RegisterCommand(
+  `${ResourceName}:closeNui`,
+  (source: number) => {
+    SetNuiFocus(false, false);
+
+    SendNUIMessage({
+      action: 'setVisible',
+      data: {
+        visible: false,
+      },
+    });
+  },
+  false,
+);
 
 RegisterNuiCallback('exit', (data: null, cb: (data: unknown) => void) => {
   SetNuiFocus(false, false);

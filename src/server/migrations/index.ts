@@ -32,7 +32,9 @@ async function ensureMigrationsTable(): Promise<void> {
  * Gets all executed migration versions from the database
  */
 async function getExecutedMigrations(): Promise<number[]> {
-  const result = await exports.oxmysql.query_async(`SELECT version FROM ${ResourceName}_migrations ORDER BY version ASC`);
+  const result = await exports.oxmysql.query_async(
+    `SELECT version FROM ${ResourceName}_migrations ORDER BY version ASC`,
+  );
   return result?.map((row: any) => row.version) ?? [];
 }
 
@@ -107,9 +109,7 @@ export async function resetMigrations(): Promise<void> {
   try {
     // Get executed migrations in reverse order to rollback
     const executedVersions = await getExecutedMigrations();
-    const executedMigrations = migrations
-      .filter((migration) => executedVersions.includes(migration.version))
-      .reverse();
+    const executedMigrations = migrations.filter((migration) => executedVersions.includes(migration.version)).reverse();
 
     // Rollback each migration
     for (const migration of executedMigrations) {

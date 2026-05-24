@@ -37,7 +37,9 @@ onNet(`${ResourceName}:getCounter`, async () => {
 });
 
 onNet(`${ResourceName}:incrementCounter`, async () => {
-  await exports.oxmysql.execute_async(`UPDATE ${ResourceName}_counter SET counter_value = counter_value + 1 WHERE id = 1`);
+  await exports.oxmysql.execute_async(
+    `UPDATE ${ResourceName}_counter SET counter_value = counter_value + 1 WHERE id = 1`,
+  );
 
   const result = await exports.oxmysql.query_async(`SELECT counter_value FROM ${ResourceName}_counter LIMIT 1`);
 

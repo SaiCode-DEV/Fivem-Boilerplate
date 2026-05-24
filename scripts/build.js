@@ -42,7 +42,7 @@ createBuilder(
     await createFxmanifest({
       client_scripts: [outfiles.client],
       server_scripts: [outfiles.server],
-      files: [ 'dist/web/**/*', 'static/**/*'],
+      files: ['dist/web/**/*', 'static/**/*'],
       dependencies: ['/server:13068', '/onesync'],
       metadata: {
         author: 'SaiCode',
