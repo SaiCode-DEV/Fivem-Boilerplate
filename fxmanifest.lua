@@ -8,10 +8,8 @@ ui_page 'dist/web/index.html'
 node_version '22'
 
 files {
-	'locales/*.json',
 	'dist/web/**/*',
 	'static/**/*',
-	'locales/**/*',
 }
 
 dependencies {

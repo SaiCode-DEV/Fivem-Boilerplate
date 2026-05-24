@@ -22,7 +22,7 @@ export default {
   up: async () => {
     // Your migration code here
     await exports.oxmysql.execute_async(`
-      CREATE TABLE IF NOT EXISTS stockmarket_stocks (
+      CREATE TABLE IF NOT EXISTS ${ResourceName}_stocks (
         id INT PRIMARY KEY AUTO_INCREMENT,
         symbol VARCHAR(10) NOT NULL UNIQUE,
         price DECIMAL(10, 2) NOT NULL,
@@ -32,7 +32,7 @@ export default {
   },
   down: async () => {
     // Rollback code (optional, for future use)
-    await exports.oxmysql.execute_async('DROP TABLE IF EXISTS stockmarket_stocks');
+    await exports.oxmysql.execute_async(`DROP TABLE IF EXISTS ${ResourceName}_stocks`);
   },
 };
 ```

@@ -52,9 +52,9 @@
     "@fontsource/roboto": "^5.2.9",
     "@mdi/font": "^7.4.47",
     "@nativewrappers/fivem": "latest",
-    "axiom": "^0.43.0",
+    "axiom": "^0.52.2",
     "vue": "^3.5.28",
     "vue-router": "^5.0.2",
-    "vuetify": "^3.11.8"
+    "vuetify": "^4.0.7"
   }
 }
