@@ -762,11 +762,6 @@
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-7.4.47.tgz#2ae522867da3a5c88b738d54b403eb91471903af"
   integrity sha512-43MtGpd585SNzHZPcYowu/84Vz2a2g31TvPMTm9uTiCSWzaheQySUcSyUH/46fPnuPQWof2yd0pGBtzee/IQWw==
 
-"@nativewrappers/client@^1.7.33":
-  version "1.7.33"
-  resolved "https://registry.yarnpkg.com/@nativewrappers/client/-/client-1.7.33.tgz#132f7fb8313ad3fd16c06b037f109c83f8a61267"
-  integrity sha512-phuBBGdDPxZiZyw5CaFs1XWfvllnEtwATMdLaNucwMofVg/O/FjlP1bTUq4SOm4qhSZ4Zdo351ijHzBSIbZs6g==
-
 "@nativewrappers/fivem@latest":
   version "0.0.157"
   resolved "https://registry.yarnpkg.com/@nativewrappers/fivem/-/fivem-0.0.157.tgz#bfa5bbcc676f53870a36b1a94eaa66a71e7c95fc"
@@ -1595,16 +1590,6 @@
   dependencies:
     esbuild "^0.23.1"
     tsc-alias "^1.8.10"
-
-"@overextended/ox_lib@latest":
-  version "3.30.6"
-  resolved "https://registry.yarnpkg.com/@overextended/ox_lib/-/ox_lib-3.30.6.tgz#f01cb68de518dcf5214d650f223396e8ffe062ca"
-  integrity sha512-yy4679riXT/cE42sWx6rrcgAQ2RJxo+sU3lFcdiqj+rivxYYRcQZXo5OIw0E1GroloaiIKwZA2F4d9wv1fW78A==
-  dependencies:
-    "@nativewrappers/client" "^1.7.33"
-    csstype "^3.1.3"
-    fast-printf "^1.6.9"
-    typescript "^5.4.2"
 
 "@parcel/watcher-android-arm64@2.5.6":
   version "2.5.6"
@@ -2832,7 +2817,7 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-csstype@^3.1.3, csstype@^3.2.3:
+csstype@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.2.3.tgz#ec48c0f3e993e50648c86da559e2610995cf989a"
   integrity sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==
@@ -3409,11 +3394,6 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
-
-fast-printf@^1.6.9:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/fast-printf/-/fast-printf-1.6.10.tgz#c44ad871726152159d7a903a5af0d65cf3d75875"
-  integrity sha512-GwTgG9O4FVIdShhbVF3JxOgSBY2+ePGsu2V/UONgoCPzF9VY6ZdBMKsHKCYQHZwNk3qNouUolRDsgVxcVA5G1w==
 
 fastq@^1.6.0:
   version "1.20.1"
@@ -4822,7 +4802,7 @@ typescript-eslint@^8.50.0:
     "@typescript-eslint/typescript-estree" "8.55.0"
     "@typescript-eslint/utils" "8.55.0"
 
-typescript@^5.4.2, typescript@^5.8.2:
+typescript@^5.8.2:
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.3.tgz#5b4f59e15310ab17a216f5d6cf53ee476ede670f"
   integrity sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==

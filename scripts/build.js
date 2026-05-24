@@ -38,11 +38,11 @@ createBuilder(
     },
   ],
   async (outfiles) => {
-    const _files = await getFiles('dist/web', 'static', 'locales');
+    const _files = await getFiles('dist/web', 'static');
     await createFxmanifest({
       client_scripts: [outfiles.client],
       server_scripts: [outfiles.server],
-      files: ['locales/*.json', 'dist/web/**/*', 'static/**/*', 'locales/**/*'],
+      files: [ 'dist/web/**/*', 'static/**/*'],
       dependencies: ['/server:13068', '/onesync'],
       metadata: {
         author: 'SaiCode',

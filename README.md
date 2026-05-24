@@ -79,14 +79,13 @@ This will:
 ## Project Structure
 
 ```
-stockmarket/
+/
 ├── src/
 │   ├── client/          # Client-side TypeScript code
 │   ├── server/          # Server-side TypeScript code
 │   │   └── migrations/  # Database migration files
 │   └── common/          # Shared code between client/server
 │       ├── config.ts    # Configuration loader
-│       ├── locale.ts    # Localization utilities
 │       └── utils.ts     # Common utilities
 ├── web/
 │   ├── src/
@@ -98,8 +97,6 @@ stockmarket/
 │   └── public/          # Static assets
 ├── static/
 │   └── config.json      # Runtime configuration
-├── locales/
-│   └── en.json          # English translations
 ├── scripts/
 │   ├── build.js         # Build configuration
 │   └── utils.js         # Build utilities
@@ -125,13 +122,6 @@ stockmarket/
 ### Static Configuration
 
 Edit `static/config.json` to configure your resource. This file is loaded at runtime and can be modified without rebuilding.
-
-### Localization
-
-Add or modify translation files in the `locales/` directory:
-
-- `en.json` - English (default)
-- Add more languages as needed (e.g., `fr.json`, `de.json`)
 
 ## Database Migrations
 

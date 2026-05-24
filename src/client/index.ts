@@ -1,11 +1,11 @@
 import Config from '@common/config';
 import { Greetings } from '@common/index';
-import { cache } from '@overextended/ox_lib/client';
 
+const resourceName = GetCurrentResourceName();
 Greetings();
 
 if (Config.EnableNuiCommand) {
-  onNet(`${cache.resource}:openNui`, (page?: string) => {
+  onNet(`${resourceName}:openNui`, (page?: string) => {
     SetNuiFocus(true, true);
 
     SendNUIMessage({
@@ -17,7 +17,7 @@ if (Config.EnableNuiCommand) {
     });
   });
 
-  onNet(`${cache.resource}:closeNui`, () => {
+  onNet(`${resourceName}:closeNui`, () => {
     SetNuiFocus(false, false);
 
     SendNUIMessage({
@@ -42,16 +42,16 @@ if (Config.EnableNuiCommand) {
 
 // Counter system
 RegisterNuiCallback('getCounter', (data: null, cb: (data: unknown) => void) => {
-  emitNet(`${cache.resource}:getCounter`);
+  emitNet(`${resourceName}:getCounter`);
   cb({ ok: true });
 });
 
 RegisterNuiCallback('incrementCounter', (data: null, cb: (data: unknown) => void) => {
-  emitNet(`${cache.resource}:incrementCounter`);
+  emitNet(`${resourceName}:incrementCounter`);
   cb({ ok: true });
 });
 
-onNet(`${cache.resource}:receiveCounter`, (counterValue: number) => {
+onNet(`${resourceName}:receiveCounter`, (counterValue: number) => {
   SendNUIMessage({
     action: 'updateCounter',
     data: {
