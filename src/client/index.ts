@@ -1,6 +1,7 @@
 import Config from '@common/config';
 import { Greetings } from '@common/index';
 import { ResourceName } from '@common/resource';
+import { forwardToNUI, forwardToServer } from './nui-bridge';
 
 Greetings();
 
@@ -70,25 +71,9 @@ RegisterNuiCallback('exit', (data: null, cb: (data: unknown) => void) => {
   cb({ ok: true });
 });
 
-// Counter system
-RegisterNuiCallback('getCounter', (data: null, cb: (data: unknown) => void) => {
-  emitNet(`${ResourceName}:getCounter`);
-  cb({ ok: true });
-});
-
-RegisterNuiCallback('incrementCounter', (data: null, cb: (data: unknown) => void) => {
-  emitNet(`${ResourceName}:incrementCounter`);
-  cb({ ok: true });
-});
-
-onNet(`${ResourceName}:receiveCounter`, (counterValue: number) => {
-  SendNUIMessage({
-    action: 'updateCounter',
-    data: {
-      counter: counterValue,
-    },
-  });
-});
+forwardToServer('getCounter');
+forwardToServer('incrementCounter');
+forwardToNUI('receiveCounter');
 
 // NUI Commands
 RegisterCommand(
